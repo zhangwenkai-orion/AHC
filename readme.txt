@@ -1,7 +1,7 @@
 确认python已经安装numpy scipy sklearn
 建立文件夹utils,将以下三个文件放入文件夹内：utt2spk_to_spk2utt.pl spk2utt_to_utt2spk.pl filter_scp.pl 
-建立文件夹male,female,分别将male_ivector,female_ivector 解压后放入相应文件夹
-将其他所有文件包括utils放入同一个文件夹(此程序中是/data/zhangwenkai/cluster)，在pick_dev_validation.sh 文件中修改路径
+将其他所有文件、文件夹包括utils放入同一个文件夹(此程序中是/data/zhangwenkai/cluster)，在pick_dev_validation.sh 文件中修改路径
+分别在male female文件夹下运行 cat ivector.*.ark > ivector.ark
 运行 ./run_validation.sh 
 （文件内容 ：dev文件是设备名称  读取dev的每一行，进行AHC聚类）
 
@@ -10,7 +10,7 @@
 1.pick_dev_validation.sh [dev_name]
 对给定的设备名称创建文件夹，分男性女性进行聚类、裁剪和添加，最后输出是cut_pred*文件
 dir 是文件夹建立的路径
-ivector_dir 是男/女性ivector.ark的文件夹 (需提前执行 cat ivector.*.ark > ivector.ark)
+ivector_dir 是男/女性ivector.ark的文件夹 
 utils文件的路径也许需要修改
 2.plda_matrix.sh
 生成 dist文件（任意两个utt的plda打分） 
