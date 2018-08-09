@@ -1,5 +1,6 @@
 确认python已经安装numpy scipy sklearn
 建立文件夹utils,将以下三个文件放入文件夹内：utt2spk_to_spk2utt.pl spk2utt_to_utt2spk.pl filter_scp.pl 
+建立文件夹male,female,分别将male_ivector,female_ivector 解压后放入相应文件夹
 将其他所有文件包括utils放入同一个文件夹(此程序中是/data/zhangwenkai/cluster)，在pick_dev_validation.sh 文件中修改路径
 运行 ./run_validation.sh 
 （文件内容 ：dev文件是设备名称  读取dev的每一行，进行AHC聚类）
@@ -36,5 +37,5 @@ small中的utt跟大簇的平均ivector打分 来进行添加
 
 
 ###得到每个设备的cut_pred*之后，送交标注团队的文件处理程序##
-wav文件没有上传，是去掉utt前缀的wav.scp文件
+wav文件，是去掉utt前缀的wav.scp文件
 generate_predlist.sh文件 最后生成male_sid2spk,female_sid2spk,音频文件夹male_pcm,female_pcm
