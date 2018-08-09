@@ -1,6 +1,6 @@
 确认python已经安装numpy scipy sklearn
 建立文件夹utils,将以下三个文件放入文件夹内：utt2spk_to_spk2utt.pl spk2utt_to_utt2spk.pl filter_scp.pl 
-将其他所有文件、文件夹包括utils放入同一个文件夹(此程序中是/data/zhangwenkai/cluster)，在pick_dev_validation.sh 文件中修改路径
+将其他所有文件包括utils放入同一个文件夹(此程序中是/data/zhangwenkai/cluster)，在pick_dev_validation.sh 文件中修改路径
 运行 ./run_validation.sh 
 （文件内容 ：dev文件是设备名称  读取dev的每一行，进行AHC聚类）
 全部ivector在/data/zhangwenkai/kaldi_env/egs/aishell/online_300w/exp/male/mix6_train_ivectors200_gmm512/bnmfccdd
