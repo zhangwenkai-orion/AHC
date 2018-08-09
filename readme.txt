@@ -1,5 +1,5 @@
 确认python已经安装numpy scipy sklearn
-将所有文件放入同一个文件夹，在pick_dev_validation.sh 文件中修改路径
+将所有文件放入同一个文件夹(ci程序中是/data/zhangwenkai/cluster)，在pick_dev_validation.sh 文件中修改路径
 运行 ./run_validation.sh 
 （文件内容 ：dev文件是设备名称  读取dev的每一行，进行AHC聚类）
 
