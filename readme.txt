@@ -34,6 +34,7 @@ small中的utt跟大簇的平均ivector打分 来进行添加
 100个设备的 dev2sid形式的文件  （若要运行所有设备 需要自行准备）
 2.utils文件夹
 3.plda plda_scoring
+4.ivector.ark
 
 
 ###得到每个设备的cut_pred*之后，送交标注团队的文件处理程序##
