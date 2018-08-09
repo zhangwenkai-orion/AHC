@@ -5,12 +5,12 @@ mkdir $dir/female
 for x in male female;do
 cat /data/zhangwenkai/cluster/dev_sid_${x}| awk '{if ($1 ~/'"$1"'/){print($0)}}' > $dir/$x/dev_utt
 
-ivector_dir=/data/zhangwenkai/cluster/${x}
-sed -e 's/^........//' $ivector_dir/${x}_ivector.ark > $ivector_dir/noprefix_ivector
+ivector_dir=/data/zhangwenkai/cluster
+#sed -e 's/^........//' $ivector_dir/${x}_ivector.ark > $ivector_dir/noprefix_ivector
 utils/spk2utt_to_utt2spk.pl $dir/$x/dev_utt > $dir/$x/utt_dev
 awk '{print $1}' $dir/$x/utt_dev |sort -u > $dir/$x/utt
 awk 'END{print NR}' $dir/$x/utt
-utils/filter_scp.pl -f 1 $dir/$x/utt $ivector_dir/noprefix_ivector > $dir/$x/utt_ivector
+utils/filter_scp.pl -f 1 $dir/$x/utt $ivector_dir/${x}_ivector > $dir/$x/utt_ivector
 
 awk '{print($1)}' $dir/$x/utt_ivector | sort -u > $dir/$x/utt
 awk 'END{print NR}' $dir/$x/utt
