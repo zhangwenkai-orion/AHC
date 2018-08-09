@@ -1,10 +1,10 @@
 确认python已经安装numpy scipy sklearn
 建立文件夹utils,将以下三个文件放入文件夹内：utt2spk_to_spk2utt.pl spk2utt_to_utt2spk.pl filter_scp.pl 
 将其他所有文件、文件夹包括utils放入同一个文件夹(此程序中是/data/zhangwenkai/cluster)，在pick_dev_validation.sh 文件中修改路径
-分别在male female文件夹下解压并运行 cat ivector.*.ark > ivector.ark
 运行 ./run_validation.sh 
 （文件内容 ：dev文件是设备名称  读取dev的每一行，进行AHC聚类）
-
+全部ivector在/data/zhangwenkai/kaldi_env/egs/aishell/online_300w/exp/male/mix6_train_ivectors200_gmm512/bnmfccdd
+以及/data/zhangwenkai/kaldi_env/egs/aishell/online_300w/exp/female/mix6_train_ivectors200_gmm512/bnmfccdd
 
 程序列表：
 1.pick_dev_validation.sh [dev_name]
@@ -29,7 +29,7 @@ small中的utt跟大簇的平均ivector打分 来进行添加
 
 
 文件列表：
-1.100_dev_sid_male 100_dev_sid_female 
+1.dev_sid_male dev_sid_female 
 100个设备的 dev2sid形式的文件  （若要运行所有设备 需要自行准备）
 2.utils文件夹
 3.plda plda_scoring
