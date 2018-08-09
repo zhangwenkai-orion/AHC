@@ -1,6 +1,6 @@
 import sys, os
 import commands
-#import numpy as np
+
 from scipy.spatial.distance import pdist, squareform
 
 class Hierarchical:
@@ -26,12 +26,6 @@ def traverse(node):
 
 def traverse_plda(node1,node2,plda_matrix):
     min_plda=1000
-    #plda_matrix=get_arr('dist')
-    
-    #plda_matrix=squareform(plda_matrix,force='tomatrix',checks=True)
-    #plda_matrix=[[0,9.7,13.34],
-	#	[9.7,0,10.23],
-	#	[13.34,10.23,0]]
     flag_list_1= traverse(node1)
     flag_list_2= traverse(node2)
     print flag_list_1,flag_list_2
@@ -83,14 +77,14 @@ def hcluster(data):
 
 
     clusters = [Hierarchical(data[i], flag = i) for i in range(len(data))]
-    #print data[1].ivector
+   
     plda_dict = {}
     max_id1 = None
     max_id2 = None
     currentCluster = -100
     count=0
     maxDist = 19
-    #while(len(clusters) > n ):
+   
     while (maxDist > 12):    
         maxDist = -10000000
         for i in range(len(clusters) - 1 - count):
@@ -129,18 +123,17 @@ def hcluster_global(clusters,plda_matrix):
         print sys.stderr, "invalid data"
         sys.exit(1)
     
-    #print data[1].ivector
+    
     min_dict = {}
     max_id1 = None
     max_id2 = None
     currentCluster = -100
     count=0
     maxDist = 11
-    #while(len(clusters) > n ):
+   
     while (maxDist > 8):
         maxDist=8
-        #oldclusters=clusters
-        
+   
         for i in range(len(clusters) - 1 - count):
             for j in range(i + 1, len(clusters) - count ):
                 if min_dict.get((clusters[i].flag, clusters[j].flag)) == None:
@@ -167,9 +160,7 @@ def hcluster_global(clusters,plda_matrix):
             del clusters[max_id1]
             clusters.append(newCluster)
         
-    #if oldclusters==clusters:
-         #   break
-    
+   
     return clusters
 
 def hcluster_final(clusters):
@@ -180,7 +171,7 @@ def hcluster_final(clusters):
     currentCluster = -100
     count=0
     maxDist = 19
-    #while(len(clusters) > n ):
+  
     while (maxDist > 12):
         maxDist = -10000000
         for i in range(len(clusters) - 1 - count):
@@ -237,23 +228,17 @@ def get_matrix(f):
 
 
 if __name__ == '__main__':
-    #data = [[123,321,434,4325,345345],[23124,141241,434234,9837489,34743],\
-    #[128937,127,12381,424,8945],[322,4348,5040,8189,2348],\
-    #[51249,42190,2713,2319,4328],[13957,1871829,8712847,34589,30945],\
-    #[1234,45094,23409,13495,348052],[49853,3847,4728,4059,5389]]
-    #finalCluster = hcluster(data, 7)
-    #print finalCluster
+  
 
 
     plda_matrix=get_arr(sys.argv[3])
 
     plda_matrix=squareform(plda_matrix,force='tomatrix',checks=True)
-    #print plda_matrix
+
     data = get_matrix(sys.argv[1])
-    #print data[1]
+
     clusters=hcluster(data)
-    #old_len=0
-    #while(len(clusters)!=old_len):
+ 
     for i in range(10):
     	clusters = hcluster_global(clusters,plda_matrix)
     old_len=0
