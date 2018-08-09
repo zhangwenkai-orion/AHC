@@ -6,7 +6,7 @@ for x in male female;do
 cat /data/zhangwenkai/cluster/100_dev_sid_${x}| awk '{if ($1 ~/'"$1"'/){print($0)}}' > $dir/$x/dev_utt
 
 ivector_dir=/data/zhangwenkai/cluster/${x}
-sed -e 's/^........//' $ivector_dir/ivector.ark > $ivector_dir/noprefix_ivector
+sed -e 's/^........//' $ivector_dir/${x}_ivector.ark > $ivector_dir/noprefix_ivector
 utils/spk2utt_to_utt2spk.pl $dir/$x/dev_utt > $dir/$x/utt_dev
 awk '{print $1}' $dir/$x/utt_dev |sort -u > $dir/$x/utt
 awk 'END{print NR}' $dir/$x/utt

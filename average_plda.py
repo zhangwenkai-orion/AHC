@@ -19,7 +19,7 @@ def plda(v1, v2):
     os.system('./plda_scoring plda v1 v2 score')
     score=os.popen('cat score')
     plda=float(score.readline())
-    #os.system('rm' + ' ' + arg6)
+    
 
 
     return plda
@@ -48,7 +48,7 @@ def get_matrix(f):
                 list_to_float.append(each_line)
         #print list_to_float
         return list_to_float
-#cluster
+
 
 
 if __name__ == '__main__':

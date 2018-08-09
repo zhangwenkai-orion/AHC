@@ -1,5 +1,7 @@
 确认python已经安装numpy scipy sklearn
-将所有文件放入同一个文件夹，在pick_dev_validation.sh 文件中修改路径
+建立文件夹utils,将以下三个文件放入文件夹内：utt2spk_to_spk2utt.pl spk2utt_to_utt2spk.pl filter_scp.pl 
+将其他所有文件、文件夹包括utils放入同一个文件夹(此程序中是/data/zhangwenkai/cluster)，在pick_dev_validation.sh 文件中修改路径
+分别在male female文件夹下运行 cat ivector.*.ark > ivector.ark
 运行 ./run_validation.sh 
 （文件内容 ：dev文件是设备名称  读取dev的每一行，进行AHC聚类）
 
@@ -8,8 +10,7 @@
 1.pick_dev_validation.sh [dev_name]
 对给定的设备名称创建文件夹，分男性女性进行聚类、裁剪和添加，最后输出是cut_pred*文件
 dir 是文件夹建立的路径
-ivector_dir 是男/女性ivector.ark的文件夹 (需提前执行 cat ivector.*.ark > ivector.ark)
-utils文件的路径也许需要修改
+ivector_dir 是男/女性ivector.ark的文件夹 
 2.plda_matrix.sh
 生成 dist文件（任意两个utt的plda打分） 
 为程序中生成plda_matrix做准备
@@ -32,8 +33,9 @@ small中的utt跟大簇的平均ivector打分 来进行添加
 100个设备的 dev2sid形式的文件  （若要运行所有设备 需要自行准备）
 2.utils文件夹
 3.plda plda_scoring
+4.ivector.ark
 
 
 ###得到每个设备的cut_pred*之后，送交标注团队的文件处理程序##
-wav文件没有上传，是去掉utt前缀的wav.scp文件
+wav文件，是去掉utt前缀的wav.scp文件
 generate_predlist.sh文件 最后生成male_sid2spk,female_sid2spk,音频文件夹male_pcm,female_pcm
