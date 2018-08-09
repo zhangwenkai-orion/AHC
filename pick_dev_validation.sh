@@ -1,13 +1,11 @@
 dir=/data/zhangwenkai/cluster/$1
-#mkdir $dir
-#mkdir $dir/male
-#mkdir $dir/female
+mkdir $dir
+mkdir $dir/male
+mkdir $dir/female
 for x in male female;do
-#for x in male;do
-:<<!
 cat /data/zhangwenkai/cluster/100_dev_sid_${x}| awk '{if ($1 ~/'"$1"'/){print($0)}}' > $dir/$x/dev_utt
 
-ivector_dir=/data/zhangwenkai/kaldi_env/egs/aishell/online_300w/exp/${x}/mix6_train_ivectors200_gmm512/bnmfccdd
+ivector_dir=/data/zhangwenkai/cluster/${x}
 sed -e 's/^........//' $ivector_dir/ivector.ark > $ivector_dir/noprefix_ivector
 utils/spk2utt_to_utt2spk.pl $dir/$x/dev_utt > $dir/$x/utt_dev
 awk '{print $1}' $dir/$x/utt_dev |sort -u > $dir/$x/utt
@@ -21,16 +19,8 @@ sort -u $dir/$x/utt_ivector |sed -e 's/\[//' -e 's/ \]//'| sed 's/[ ][ ]*/,/g'| 
 cat  $dir/$x/tmp| tr "," " " > $dir/$x/ivector
 rm $dir/$x/score 
 rm $dir/$x/dist
-#cp plda_matrix.sh $dir/$x
-#cp backup_cluster.py $dir/$x
-#cp plda $dir/$x
-#cp plda_scoring $dir/$x
-#cp cluster2index.sh $dir/$x
-#cp cut.py $dir/$x
-#cp num_to_sid.py $dir/$x
-#cd $dir/$x
 ./plda_matrix.sh $dir/$x
-!
+
 rm $dir/$x/pred* $dir/$x/cut_*
 python morethan_cluster.py $dir/$x/ivector $dir/$x/cluster $dir/$x/dist $dir/$x/v1 $dir/$x/v2 $dir/$x/score
 
@@ -43,10 +33,8 @@ for file in $dir/$x/pred*
 do
 python cut.py $dir/$x/ivector $file $dir/$x/cut_`basename $file` $dir/$x/dist
 done
-#new add
 ./run_add.sh $dir/$x
 
-#new add end 
 for file in $dir/$x/cut_*
 do
 python num_to_sid.py $dir/$x/utt_num $file
