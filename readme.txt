@@ -32,3 +32,8 @@ small中的utt跟大簇的平均ivector打分 来进行添加
 100个设备的 dev2sid形式的文件  （若要运行所有设备 需要自行准备）
 2.utils文件夹
 3.plda plda_scoring
+
+
+###得到每个设备的cut_pred*之后，送交标注团队的文件处理程序##
+wav文件没有上传，是去掉utt前缀的wav.scp文件
+generate_predlist.sh文件 最后生成male_sid2spk,female_sid2spk,音频文件夹male_pcm,female_pcm
