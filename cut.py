@@ -1,7 +1,6 @@
 from __future__ import division
 import sys, os
 import commands
-#import numpy as np
 from scipy.spatial.distance import pdist, squareform
 
 
@@ -33,7 +32,6 @@ def traverse_plda(v1,k,pred):
     plda_matrix=squareform(arr,force='tomatrix',checks=True)
     
     flag_list= [int(i) for i in pred]
-   # print flag_list
     l=[]
     for i in flag_list:
         if plda_matrix[i][v1] > k:
@@ -63,7 +61,7 @@ def hcluster(data,pred,k,percent):
 	if len(data) <= 0:
 		print sys.stderr, "invalid data"
 		sys.exit(1)
-	#print pred
+
 	clusters=[Hierarchical(data[i], flag = i) for i in pred]
 	
 	res=[traverse(clusters[i]) for i in range(len(clusters))]
@@ -104,11 +102,11 @@ def get_matrix(f):
 if __name__ == '__main__':
 
     data=get_matrix(sys.argv[1])
-    #print len(data)
+  
     pred = get_cluster(sys.argv[2])
     k=8
     pred=[int(i) for i in pred]
-    #print pred
+ 
     percent=0.7
     res=hcluster(data,pred,k,percent)
     print res
