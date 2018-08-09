@@ -1,7 +1,4 @@
-#./ahc_prep.sh
-#/utils/filter_scp.pl utt male_ivector > ivector
-#dir_ivector=ivector.1
-#dir_utt=utt.1
+
 dir=$1
 cat $dir/ivector |awk '{print $0 > sprintf("'"$dir"'/%s",NR)};close(sprintf("'"$dir"'/%s",NR))' 
 u=$(awk 'END{print NR}' $dir/utt )
