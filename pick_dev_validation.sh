@@ -3,7 +3,7 @@ mkdir $dir
 mkdir $dir/male
 mkdir $dir/female
 for x in male female;do
-cat /data/zhangwenkai/cluster/100_dev_sid_${x}| awk '{if ($1 ~/'"$1"'/){print($0)}}' > $dir/$x/dev_utt
+cat /data/zhangwenkai/cluster/dev_sid_${x}| awk '{if ($1 ~/'"$1"'/){print($0)}}' > $dir/$x/dev_utt
 
 ivector_dir=/data/zhangwenkai/cluster/${x}
 sed -e 's/^........//' $ivector_dir/${x}_ivector.ark > $ivector_dir/noprefix_ivector
