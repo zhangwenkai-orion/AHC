@@ -11,7 +11,6 @@
 对给定的设备名称创建文件夹，分男性女性进行聚类、裁剪和添加，最后输出是cut_pred*文件
 dir 是文件夹建立的路径
 ivector_dir 是男/女性ivector.ark的文件夹 
-utils文件的路径也许需要修改
 2.plda_matrix.sh
 生成 dist文件（任意两个utt的plda打分） 
 为程序中生成plda_matrix做准备
